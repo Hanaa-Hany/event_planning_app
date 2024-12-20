@@ -28,6 +28,22 @@ class AssetsManager{
   static const String thirdIntroLight="assets/images/third_intro_light.png";
   static const String workshopBgDark="assets/images/workshop_bg_dark.png";
   static const String workshopBgLight="assets/images/workshop_bg_light.png";
+  static const String selectedHome="assets/images/selected_home_ic.png";
+  static const String unselectedHome="assets/images/unselected_home_ic.png";
+  static const String selectedLove="assets/images/selected_love_ic.png";
+  static const String unselectedLove="assets/images/unselected_love_ic.png";
+  static const String selectedMap="assets/images/selected_map_ic.png";
+  static const String unselectedMap="assets/images/unselected_map_ic.png";
+  static const String selectedProfile="assets/images/selected_profile_ic.png";
+  static const String unselectedProfile="assets/images/unselected_profile_ic.png";
+
+
+
+
+
+
+
+
 
 
 
