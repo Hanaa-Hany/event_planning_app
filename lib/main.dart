@@ -24,8 +24,9 @@ class MyApp extends StatelessWidget{
       ],
       supportedLocales: [
         Locale('en'), // English
-        Locale('es'), // Spanish
+        Locale('ar'), // Spanish
       ],
+      locale: Locale("en"),
       routes:{
         HomeScreen.routeName : (context)=>HomeScreen(),
       } ,
