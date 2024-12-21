@@ -1,37 +1,36 @@
 import 'package:event_planning_app/home/home_screen.dart';
+import 'package:event_planning_app/providers/language_provider.dart';
 import 'package:event_planning_app/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
-void main(){
-  runApp(const MyApp());
+void main() {
+  runApp(ChangeNotifierProvider(
+      create: (context) =>
+        LanguageProvider()
+      ,
+      child: const MyApp()));
 }
-class MyApp extends StatelessWidget{
+
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var language=Provider.of<LanguageProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.appTheme,
-      initialRoute:HomeScreen.routeName ,
-      localizationsDelegates: [
-        AppLocalizations.delegate, // Add this line
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('en'), // English
-        Locale('ar'), // Spanish
-      ],
-      locale: Locale("en"),
-      routes:{
-        HomeScreen.routeName : (context)=>HomeScreen(),
-      } ,
-
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      initialRoute: HomeScreen.routeName,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      //select which language the app will use
+      locale: Locale(language.appLanguage),
+      routes: {
+        HomeScreen.routeName: (context) => HomeScreen(),
+      },
     );
-
   }
 }

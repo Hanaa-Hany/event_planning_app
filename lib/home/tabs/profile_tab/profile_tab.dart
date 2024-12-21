@@ -34,7 +34,7 @@ class _ProfileTabState extends State<ProfileTab> {
           ),
           SizedBox(height: 16,),
 
-          DropdownMenuItemsWidget(AppLocalizations.of(context)!.dark,AppLocalizations.of(context)!.light),
+          //DropdownMenuItemsWidget(AppLocalizations.of(context)!.dark,AppLocalizations.of(context)!.light),
         ],
       ),
     ));

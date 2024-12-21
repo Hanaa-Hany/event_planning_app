@@ -1,5 +1,7 @@
+import 'package:event_planning_app/providers/language_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../utils/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,8 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../utils/app_styles.dart';
 
 class DropdownMenuItemsWidget extends StatefulWidget{
-  String item1="";
-  String item2="";
+  final String item1;
+  final String item2;
 
   DropdownMenuItemsWidget(this.item1, this.item2);
 
@@ -28,7 +30,7 @@ class _DropdownMenuItemsWidgetState extends State<DropdownMenuItemsWidget> {
 
   @override
   Widget build(BuildContext context) {
-
+    var language=Provider.of<LanguageProvider>(context);
 
     return DropdownButtonFormField<String>(
       value: _selectedValue,
@@ -57,9 +59,11 @@ class _DropdownMenuItemsWidgetState extends State<DropdownMenuItemsWidget> {
         );
       }).toList(),
       onChanged: (value) {
-        _selectedValue = value;
-        setState(() {
 
+        setState(() {
+          _selectedValue = value;
+
+          _selectedValue==widget.item1?language.changeLanguage("en"):language.changeLanguage("ar");
         });
       },
       selectedItemBuilder: (BuildContext context) {
@@ -67,8 +71,11 @@ class _DropdownMenuItemsWidgetState extends State<DropdownMenuItemsWidget> {
           widget.item1,
           widget.item2
         ].map((String value) {
+          print(value);
           return Text(
-            value,
+            value == widget.item1
+                ? AppLocalizations.of(context)!.english
+                : AppLocalizations.of(context)!.arabic,
             style:AppStyle.bold20primary,
           );
         }).toList();
