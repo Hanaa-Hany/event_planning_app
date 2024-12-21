@@ -50,4 +50,9 @@ class AppStyle {
       fontSize: 20,
       color: AppColors.blackColor
   );
+  static TextStyle bold20white =const TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: AppColors.simonColor
+  );
 }
