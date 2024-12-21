@@ -4,7 +4,6 @@ import 'package:event_planning_app/home/tabs/map_tab/map_tab.dart';
 import 'package:event_planning_app/home/tabs/profile_tab/profile_tab.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
-import 'package:event_planning_app/utils/app_theme.dart';
 import 'package:event_planning_app/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
