@@ -55,4 +55,29 @@ class AppStyle {
       fontSize: 20,
       color: AppColors.simonColor
   );
+  static TextStyle regular14baby =const TextStyle(
+      fontWeight: FontWeight.normal,
+      fontSize: 14,
+      color: AppColors.babyBlueColor
+  );
+  static TextStyle bold24baby =const TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 24,
+      color: AppColors.babyBlueColor
+  );
+  static TextStyle bold14primary=const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+      color: AppColors.primaryColor
+  );
+  static TextStyle medium14primary =const TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      color: AppColors.primaryColor
+  );
+  static TextStyle medium14baby =const TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      color: AppColors.babyBlueColor
+  );
 }
