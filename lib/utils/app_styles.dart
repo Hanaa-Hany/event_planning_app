@@ -80,4 +80,9 @@ class AppStyle {
       fontSize: 14,
       color: AppColors.babyBlueColor
   );
+  static TextStyle medium16baby =const TextStyle(
+      fontWeight: FontWeight.normal,
+      fontSize: 16,
+      color: AppColors.babyBlueColor
+  );
 }

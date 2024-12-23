@@ -36,6 +36,22 @@ class AssetsManager{
   static const String unselectedMap="assets/images/unselected_map_ic.png";
   static const String selectedProfile="assets/images/selected_profile_ic.png";
   static const String unselectedProfile="assets/images/unselected_profile_ic.png";
+  static const String allIcon="assets/images/all_ic.png";
+  static const String arabicIcon="assets/images/arabic_ic.png";
+  static const String birthdayIcon="assets/images/birthday_ic.png";
+  static const String bookIcon="assets/images/book_ic.png";
+  static const String dateIcon="assets/images/date_ic.png";
+  static const String englishIcon="assets/images/english_ic.png";
+  static const String googleIcon="assets/images/google_ic.png";
+  static const String logoutIcon="assets/images/logout_ic.png";
+  static const String mailIcon="assets/images/mail_ic.png";
+  static const String nameIcon="assets/images/name_ic.png";
+  static const String passIcon="assets/images/pass_ic.png";
+  static const String searchIcon="assets/images/search_ic.png";
+  static const String sportIcon="assets/images/sport_ic.png";
+  static const String sunnyIcon="assets/images/sunny_ic.png";
+  static const String routeImage="assets/images/route_bg.png";
+
 
 
 
