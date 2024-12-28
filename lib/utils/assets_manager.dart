@@ -46,7 +46,7 @@ class AssetsManager{
   static const String logoutIcon="assets/images/logout_ic.png";
   static const String mailIcon="assets/images/mail_ic.png";
   static const String nameIcon="assets/images/name_ic.png";
-  static const String passIcon="assets/images/pass_ic.png";
+  static const String passIcon="assets/images/pass_icon.png";
   static const String searchIcon="assets/images/search_ic.png";
   static const String sportIcon="assets/images/sport_ic.png";
   static const String sunnyIcon="assets/images/sunny_ic.png";

@@ -1,3 +1,5 @@
+import 'package:event_planning_app/auth/login_screen.dart';
+import 'package:event_planning_app/auth/register_screen.dart';
 import 'package:event_planning_app/home/home_screen.dart';
 import 'package:event_planning_app/providers/language_provider.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
@@ -30,13 +32,15 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: theme.themeModeApp,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: LoginScreen.routeName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       //select which language the app will use
       locale: Locale(language.appLanguage),
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
+        LoginScreen.routeName: (context) =>  LoginScreen(),
+        RegisterScreen.routeName: (context) =>  RegisterScreen(),
       },
     );
   }

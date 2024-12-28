@@ -85,4 +85,16 @@ class AppStyle {
       fontSize: 16,
       color: AppColors.babyBlueColor
   );
+  static TextStyle bold16primaryItalic=const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      color: AppColors.primaryColor,
+    fontStyle: FontStyle.italic,
+    decoration:TextDecoration.underline,
+  );
+  static TextStyle medium16primary =const TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      color: AppColors.primaryColor
+  );
 }
