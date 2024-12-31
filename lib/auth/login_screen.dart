@@ -2,17 +2,19 @@ import 'package:event_planning_app/auth/register_screen.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:event_planning_app/utils/assets_manager.dart';
-import 'package:event_planning_app/widget/eleveted_btn.dart';
+import 'package:event_planning_app/widget/custom_elevated_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../home/home_screen.dart';
-import '../widget/text_field_widget.dart';
+import '../widget/custom_text_field_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = "LoginScreen";
+  TextEditingController emailController=TextEditingController();
+  TextEditingController passController=TextEditingController();
 
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,15 @@ class LoginScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(AssetsManager.splashScreen),
-          TextFieldWidget(
+          CustomTextFieldWidget(
               hintText: AppLocalizations.of(context)!.email,
-              prefixIcon: AssetsManager.mailIcon),
+              prefixIcon: AssetsManager.mailIcon,
+          controller: emailController,),
           SizedBox(height: height*.02,),
-          TextFieldWidget(
+          CustomTextFieldWidget(
               hintText: AppLocalizations.of(context)!.password,
-              prefixIcon: AssetsManager.passIcon),
+              prefixIcon: AssetsManager.passIcon,
+          controller: passController,),
           SizedBox(height: height*.02,),
           Container(
             alignment: AlignmentDirectional.centerEnd,
@@ -44,7 +48,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: height*.02,),
-          ElevetedBtn(
+          CustomElevatedBtn(
             text: AppLocalizations.of(context)!.login,
             onPressed:(){Navigator.of(context).popAndPushNamed(HomeScreen.routeName);},
           ),

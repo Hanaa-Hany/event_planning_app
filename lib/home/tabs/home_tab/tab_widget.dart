@@ -6,7 +6,14 @@ import 'package:flutter/material.dart';
 class TabWidget extends StatelessWidget {
   String eventName;
   bool isSelected;
-   TabWidget({super.key,required this.eventName,required this.isSelected});
+  Color selectedBackgroundColor;
+  Color unSelectedBackgroundColor;
+  TextStyle selectedTextStyle;
+  TextStyle unSelectedTextStyle;
+  Color? borderColor;
+   TabWidget({super.key,required this.eventName,required this.isSelected,required this.selectedBackgroundColor
+   ,required this.unSelectedBackgroundColor,required this.selectedTextStyle,required this.unSelectedTextStyle,
+   this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +23,19 @@ class TabWidget extends StatelessWidget {
       padding: EdgeInsets.all(width*.02),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(width*.15),
-            color:isSelected==true?AppColors.babyBlueColor: Colors.transparent ,
-        border: Border.all(width: 1,color: AppColors.babyBlueColor)
+            color:isSelected==true?
+            selectedBackgroundColor:unSelectedBackgroundColor,
+            // AppColors.babyBlueColor
+            //     : Colors.transparent ,
+        border: Border.all(width: 1,color:borderColor ??AppColors.babyBlueColor)
 
       ),
       child: Text(eventName,style:
       isSelected==true?
-      AppStyle.medium14primary:
-        AppStyle.medium14baby,),
+    selectedTextStyle:unSelectedTextStyle
+      // AppStyle.medium14primary:
+      //   AppStyle.medium14baby,
+       ),
     );
   }
 }

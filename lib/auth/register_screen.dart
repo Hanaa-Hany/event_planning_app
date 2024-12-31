@@ -5,13 +5,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../home/home_screen.dart';
 import '../utils/app_styles.dart';
 import '../utils/assets_manager.dart';
-import '../widget/eleveted_btn.dart';
-import '../widget/text_field_widget.dart';
+import '../widget/custom_elevated_btn.dart';
+import '../widget/custom_text_field_widget.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const String routeName = "RegisterScreen";
+  TextEditingController nameController=TextEditingController();
+  TextEditingController emailController=TextEditingController();
+  TextEditingController passController=TextEditingController();
+  TextEditingController repassController=TextEditingController();
 
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,31 +29,35 @@ class RegisterScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Image.asset(AssetsManager.splashScreen),
-                  TextFieldWidget(
+                  CustomTextFieldWidget(
                       hintText: AppLocalizations.of(context)!.name,
-                      prefixIcon: AssetsManager.nameIcon),
+                      prefixIcon: AssetsManager.nameIcon,
+                  controller: nameController,),
                   SizedBox(
                     height: height * .02,
                   ),
-                  TextFieldWidget(
+                  CustomTextFieldWidget(
                       hintText: AppLocalizations.of(context)!.email,
-                      prefixIcon: AssetsManager.mailIcon),
+                      prefixIcon: AssetsManager.mailIcon,
+                  controller: emailController,),
                   SizedBox(
                     height: height * .02,
                   ),
-                  TextFieldWidget(
+                  CustomTextFieldWidget(
                       hintText: AppLocalizations.of(context)!.password,
-                      prefixIcon: AssetsManager.passIcon),
+                      prefixIcon: AssetsManager.passIcon,
+                  controller: passController,),
                   SizedBox(
                     height: height * .02,
                   ),
-                  TextFieldWidget(
+                  CustomTextFieldWidget(
                       hintText: AppLocalizations.of(context)!.re_pass,
-                      prefixIcon: AssetsManager.passIcon),
+                      prefixIcon: AssetsManager.passIcon,
+                  controller: repassController,),
                   SizedBox(
                     height: height * .02,
                   ),
-                  ElevetedBtn(
+                  CustomElevatedBtn(
                     text: AppLocalizations.of(context)!.create_acc,
                     onPressed:(){Navigator.of(context).popAndPushNamed(HomeScreen.routeName);},
                   ),

@@ -118,7 +118,11 @@ class _HomeTabState extends State<HomeTab> {
                         return TabWidget(
                             eventName: categoriesName,
                             isSelected: selectedIndex ==
-                                categoriesList.indexOf(categoriesName));
+                                categoriesList.indexOf(categoriesName),
+                          selectedBackgroundColor: AppColors.babyBlueColor,
+                          unSelectedBackgroundColor: Colors.transparent,
+                          selectedTextStyle: AppStyle.medium14primary,
+                          unSelectedTextStyle: AppStyle.medium14baby,);
                       }).toList()
 
                       //first way using loop

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
 
-class ElevetedBtn extends StatelessWidget {
+class CustomElevatedBtn extends StatelessWidget {
   String text;
   TextStyle? textStyle;
   Color? backgroundColor;
   OutlinedBorder? borderStyle;
   final VoidCallback? onPressed;
 
-  ElevetedBtn(
+  CustomElevatedBtn(
       {super.key,
       required this.text,
       this.textStyle,

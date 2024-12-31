@@ -28,6 +28,8 @@ class AssetsManager{
   static const String thirdIntroLight="assets/images/third_intro_light.png";
   static const String workshopBgDark="assets/images/workshop_bg_dark.png";
   static const String workshopBgLight="assets/images/workshop_bg_light.png";
+  static const String exhibitionBgDark="assets/images/exhibition_bg_dark.png";
+  static const String exhibitionBgLight="assets/images/exhibition_bg_light.png";
   static const String selectedHome="assets/images/selected_home_ic.png";
   static const String unselectedHome="assets/images/unselected_home_ic.png";
   static const String selectedLove="assets/images/selected_love_ic.png";
@@ -51,6 +53,9 @@ class AssetsManager{
   static const String sportIcon="assets/images/sport_ic.png";
   static const String sunnyIcon="assets/images/sunny_ic.png";
   static const String routeImage="assets/images/route_bg.png";
+  static const String editIcon="assets/images/edit_ic.png";
+  static const String clockIcon="assets/images/clock_ic.png";
+  static const String locationIcon="assets/images/location_ic.png";
 
 
 

@@ -6,11 +6,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../widget/text_field_widget.dart';
+import '../../../widget/custom_text_field_widget.dart';
 
-class LoveTab extends StatelessWidget {
+class LoveTab extends StatefulWidget {
   const LoveTab({super.key});
 
+  @override
+  State<LoveTab> createState() => _LoveTabState();
+}
+
+class _LoveTabState extends State<LoveTab> {
+  TextEditingController searchController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -23,15 +29,16 @@ class LoveTab extends StatelessWidget {
         children: [
           Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .04),
-            child: TextFieldWidget(hintText:AppLocalizations.of(context)!.search_for_event
+            child: CustomTextFieldWidget(hintText:AppLocalizations.of(context)!.search_for_event
               ,prefixIcon: AssetsManager.searchIcon
               ,hintStyle: AppStyle.bold14primary,
-            borderColor: AppColors.primaryColor,),
+            borderColor: AppColors.primaryColor,
+            controller: searchController,),
           ),
           Expanded(
             child: ListView.builder(itemBuilder: (context, index) {
               return TabItemWidget();
-            
+
             },
             itemCount: 20,),
           )

@@ -3,13 +3,17 @@ import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class CustomTextFieldWidget extends StatelessWidget {
 
   String hintText;
-  String prefixIcon;
+  String? prefixIcon;
   TextStyle? hintStyle;
   Color? borderColor;
-  TextFieldWidget({super.key,required this.hintText,required this.prefixIcon, this.hintStyle,this.borderColor});
+  int? maxLines;
+  TextEditingController controller;
+  String? Function(String?)? validator;
+  CustomTextFieldWidget({super.key,required this.hintText, this.prefixIcon, this.hintStyle
+    ,this.borderColor,this.maxLines,required this.controller, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +25,23 @@ class TextFieldWidget extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: hintStyle??AppStyle.medium16gray,
-        prefixIcon:Image.asset(prefixIcon),
+        prefixIcon: prefixIcon != null?Image.asset(prefixIcon!):null,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color:borderColor?? AppColors.grayColor,width: 1),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color:borderColor?? AppColors.grayColor,width: 1),
+          borderSide: BorderSide(color:borderColor?? AppColors.redColor,width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color:borderColor?? AppColors.grayColor,width: 1),
-        )
+        ),
       ),
+      maxLines:maxLines ,
+      controller: controller,
+      validator: validator,
     );
   }
 }

@@ -1,10 +1,10 @@
+import 'package:event_planning_app/home/tabs/home_tab/add_event/add_event.dart';
 import 'package:event_planning_app/home/tabs/home_tab/home_tab.dart';
 import 'package:event_planning_app/home/tabs/love_tab/love_tab.dart';
 import 'package:event_planning_app/home/tabs/map_tab/map_tab.dart';
 import 'package:event_planning_app/home/tabs/profile_tab/profile_tab.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
-import 'package:event_planning_app/utils/app_theme.dart';
 import 'package:event_planning_app/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -70,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             //add new Event
+            Navigator.pushNamed(context, AddEvent.routeName);
           },
           shape: const StadiumBorder(
               side: BorderSide(width: 5, color: AppColors.whiteColor)),

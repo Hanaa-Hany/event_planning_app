@@ -22,6 +22,7 @@
   "event_date": "تاريخ الحدث",
   "event_time": "وقت الحدث",
   "choose_date": "اختار التاريخ",
+   "choose_time": "اختر الوقت",
   "location": "الموقع",
   "choose_event_location": "اختر موقع الحدث",
   "add_event": "اضافه حدث",

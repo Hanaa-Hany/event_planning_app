@@ -1,14 +1,21 @@
 import 'package:event_planning_app/auth/login_screen.dart';
 import 'package:event_planning_app/auth/register_screen.dart';
 import 'package:event_planning_app/home/home_screen.dart';
+import 'package:event_planning_app/home/tabs/home_tab/add_event/add_event.dart';
 import 'package:event_planning_app/providers/language_provider.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
 import 'package:event_planning_app/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   //changeNotifierProvider => u cant used this way if u have multiProvider
   runApp(MultiProvider(
       providers: [
@@ -39,8 +46,9 @@ class MyApp extends StatelessWidget {
       locale: Locale(language.appLanguage),
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
-        LoginScreen.routeName: (context) =>  LoginScreen(),
-        RegisterScreen.routeName: (context) =>  RegisterScreen(),
+        LoginScreen.routeName: (context) =>   LoginScreen(),
+        RegisterScreen.routeName: (context) =>   RegisterScreen(),
+        AddEvent.routeName: (context) =>   AddEvent(),
       },
     );
   }
