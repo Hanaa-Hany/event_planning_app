@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_planning_app/auth/login_screen.dart';
 import 'package:event_planning_app/auth/register_screen.dart';
 import 'package:event_planning_app/home/home_screen.dart';
 import 'package:event_planning_app/home/tabs/home_tab/add_event/add_event.dart';
+import 'package:event_planning_app/providers/event_provider.dart';
 import 'package:event_planning_app/providers/language_provider.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
 import 'package:event_planning_app/utils/app_theme.dart';
@@ -16,6 +18,7 @@ void main()async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseFirestore.instance.disableNetwork();
   //changeNotifierProvider => u cant used this way if u have multiProvider
   runApp(MultiProvider(
       providers: [
@@ -23,6 +26,8 @@ void main()async {
         (context)=>LanguageProvider()),
         ChangeNotifierProvider(create:
             (context)=>ThemeProvider()),
+        ChangeNotifierProvider(create:
+            (context)=>EventProvider()),
       ],
       child: const MyApp()));
 }

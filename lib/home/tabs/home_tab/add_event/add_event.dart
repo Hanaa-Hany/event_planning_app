@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:event_planning_app/firbase_utils.dart';
 import 'package:event_planning_app/home/tabs/home_tab/add_event/date_time_widget.dart';
 import 'package:event_planning_app/home/tabs/home_tab/tab_widget.dart';
+import 'package:event_planning_app/model/event.dart';
+import 'package:event_planning_app/providers/event_provider.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:event_planning_app/utils/assets_manager.dart';
@@ -8,6 +12,7 @@ import 'package:event_planning_app/widget/custom_text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class AddEvent extends StatefulWidget {
   static const String routeName = "AddEvent";
@@ -68,12 +73,14 @@ class _AddEventState extends State<AddEvent> {
   String? formattedDate;
   TimeOfDay? selectedTime;
   String? formattedTime;
+  String ? eventName;
+  late EventProvider eventProvider;
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-
+     eventProvider=Provider.of<EventProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -110,6 +117,7 @@ class _AddEventState extends State<AddEvent> {
                     return InkWell(
                       onTap: () {
                         selectedIndex = index;
+                       eventName=eventCategoriesList[index];
                         selectedImage = eventBackgroundList[selectedIndex];
                         print(eventBackgroundList[selectedIndex]);
                         setState(() {});
@@ -253,8 +261,23 @@ class _AddEventState extends State<AddEvent> {
 
       if(_formKey.currentState?.validate()==true) {
         //addEvent to fireStore
+        Event event=Event(eventName: eventName,
+            title: titleController.text,
+            description: discController.text,
+            dateTime: selectedDate!,
+            time: formattedTime,
+            image: selectedImage);
+        FirebaseUtils.addEventToFireStore(event).timeout(Duration(milliseconds: 500),
+        onTimeout:(){
+          print("add event Successfully");
+          eventProvider.getEventFromFireStore();
+          Navigator.pop(context);
+        });
 
-    };
+
+
+
+      }
   }
   void showDate()async{
      var chooseDate=await showDatePicker(context: context,

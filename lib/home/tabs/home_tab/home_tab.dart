@@ -1,9 +1,13 @@
+import 'package:event_planning_app/firbase_utils.dart';
 import 'package:event_planning_app/home/tabs/home_tab/tab_item_widget.dart';
 import 'package:event_planning_app/home/tabs/home_tab/tab_widget.dart';
+import 'package:event_planning_app/model/event.dart';
+import 'package:event_planning_app/providers/event_provider.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({super.key});
@@ -13,24 +17,18 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  int selectedIndex = 0;
+
+
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    List<String> categoriesList = [
-      "All",
-      "Sport",
-      "Birthday",
-      "Meeting",
-      "Gaming",
-      "Eating",
-      "Holiday",
-      "Exhibition",
-      "Workshop",
-      "Book club"
-    ];
+    var eventProvider=Provider.of<EventProvider>(context);
+
+    if(eventProvider.eventList.isEmpty) {
+      eventProvider.getEventFromFireStore();
+    }
 
     return Scaffold(
         appBar: AppBar(
@@ -96,11 +94,11 @@ class _HomeTabState extends State<HomeTab> {
                 ],
               ),
               DefaultTabController(
-                  length: categoriesList.length,
+                  length: eventProvider.categoriesList.length,
                   initialIndex: 0,
                   child: TabBar(
                       onTap: (index) {
-                        selectedIndex = index;
+                        eventProvider.changeSelectedIndex(index);
                         setState(() {});
                       },
                       isScrollable: true,
@@ -114,11 +112,11 @@ class _HomeTabState extends State<HomeTab> {
                           //second way using map
                           //tabs should take list and i have list of string and i want to loop on it
                           //so used map to convert list of string items to list of widget
-                          categoriesList.map((categoriesName) {
+                          eventProvider.categoriesList.map((categoriesName) {
                         return TabWidget(
                             eventName: categoriesName,
-                            isSelected: selectedIndex ==
-                                categoriesList.indexOf(categoriesName),
+                            isSelected:eventProvider. selectedIndex ==
+                                eventProvider.categoriesList.indexOf(categoriesName),
                           selectedBackgroundColor: AppColors.babyBlueColor,
                           unSelectedBackgroundColor: Colors.transparent,
                           selectedTextStyle: AppStyle.medium14primary,
@@ -146,24 +144,27 @@ class _HomeTabState extends State<HomeTab> {
             ]),
           ),
           Expanded(
-            child: ListView.builder(
+            child:eventProvider.filterEventList.isEmpty?
+                Center(child: Text("No Events Found Yet !"),):
+            ListView.builder(
               itemBuilder: (context, index) {
-                return TabItemWidget();
+                return TabItemWidget(event: eventProvider.filterEventList[index],);
               },
-              itemCount: 20,
+              itemCount: eventProvider.filterEventList.length,
             ),
           )
         ]));
   }
 
   //first way using loop
-  bool checkSelectedTab(int index) {
-    print(selectedIndex);
+  // bool checkSelectedTab(int index) {
+  //   print(selectedIndex);
+  //
+  //   if (selectedIndex == index) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
-    if (selectedIndex == index) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
