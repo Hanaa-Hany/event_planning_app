@@ -1,8 +1,10 @@
+import 'package:event_planning_app/auth/login_screen.dart';
 import 'package:event_planning_app/home/tabs/profile_tab/dropdown_menu_items.dart';
 import 'package:event_planning_app/providers/theme_provider.dart';
 import 'package:event_planning_app/utils/app_colors.dart';
 import 'package:event_planning_app/utils/app_styles.dart';
 import 'package:event_planning_app/utils/assets_manager.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -90,6 +92,7 @@ class _ProfileTabState extends State<ProfileTab> {
                 child: ElevatedButton.icon(
                   onPressed: () {
                     //logout logic
+                    logout();
                   },
                   icon: Image.asset(AssetsManager.logoutIcon),
                   label: Text(
@@ -108,5 +111,11 @@ class _ProfileTabState extends State<ProfileTab> {
             ],
           ),
         ));
+  }
+
+  void logout() async{
+    await FirebaseAuth.instance.signOut();
+    print("Signed out success");
+    Navigator.popAndPushNamed(context, LoginScreen.routeName);
   }
 }
