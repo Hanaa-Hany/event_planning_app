@@ -10,14 +10,19 @@ class CustomTextFieldWidget extends StatelessWidget {
   TextStyle? hintStyle;
   Color? borderColor;
   int? maxLines;
+  bool? obscureText;
+  TextInputType? keyboardType;
   TextEditingController controller;
   String? Function(String?)? validator;
   CustomTextFieldWidget({super.key,required this.hintText, this.prefixIcon, this.hintStyle
-    ,this.borderColor,this.maxLines,required this.controller, this.validator});
+    ,this.borderColor,this.maxLines,required this.controller, this.validator,
+  this.keyboardType, this.obscureText});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType??TextInputType.text,
+      obscureText: obscureText?? false,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -39,7 +44,7 @@ class CustomTextFieldWidget extends StatelessWidget {
           borderSide: BorderSide(color:borderColor?? AppColors.grayColor,width: 1),
         ),
       ),
-      maxLines:maxLines ,
+      maxLines:maxLines??1 ,
       controller: controller,
       validator: validator,
     );
